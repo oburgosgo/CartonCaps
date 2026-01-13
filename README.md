@@ -29,7 +29,8 @@ From the repo root:
 ```bash
 dotnet restore
 dotnet build
-dotnet run --project src/CartonCaps.Referrals.Api```
+dotnet run --project src/CartonCaps.Referrals.Api
+```
 
 ## Database (SQLite)
 
@@ -43,3 +44,4 @@ This API uses **SQLite** and applies migrations automatically on startup (`db.Da
 ### Run tests
 ```bash
 dotnet test
+```
