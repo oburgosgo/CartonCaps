@@ -1,5 +1,4 @@
 <Solution>
-  <Folder Name="/docs/" />
   <Folder Name="/Elementos de la solución/">
     <File Path="gitignore" />
     <File Path="nuget.only.org.config" />
