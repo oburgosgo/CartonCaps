@@ -17,8 +17,8 @@ namespace CartonCaps.Referrals.Infrastructure.Migrations
                 {
                     Id = table.Column<Guid>(type: "TEXT", nullable: false),
                     ReferralCode = table.Column<string>(type: "TEXT", maxLength: 32, nullable: false),
-                    ReferrerUserId = table.Column<string>(type: "TEXT", maxLength: 128, nullable: false),
-                    Channel = table.Column<short>(type: "INTEGER", maxLength: 32, nullable: false),
+                    ReferrerUserId = table.Column<string>(type: "TEXT", maxLength: 60, nullable: false),
+                    Channel = table.Column<short>(type: "INTEGER", maxLength: 3, nullable: false),
                     Deeplink = table.Column<string>(type: "TEXT", maxLength: 512, nullable: false),
                     Status = table.Column<short>(type: "INTEGER", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "TEXT", nullable: false),

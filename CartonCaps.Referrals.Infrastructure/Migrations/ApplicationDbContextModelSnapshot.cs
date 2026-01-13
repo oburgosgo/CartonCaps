@@ -24,7 +24,7 @@ namespace CartonCaps.Referrals.Infrastructure.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<short>("Channel")
-                        .HasMaxLength(32)
+                        .HasMaxLength(3)
                         .HasColumnType("INTEGER");
 
                     b.Property<DateTime>("CreatedAt")
@@ -54,7 +54,7 @@ namespace CartonCaps.Referrals.Infrastructure.Migrations
 
                     b.Property<string>("ReferrerUserId")
                         .IsRequired()
-                        .HasMaxLength(128)
+                        .HasMaxLength(60)
                         .HasColumnType("TEXT");
 
                     b.Property<short>("Status")

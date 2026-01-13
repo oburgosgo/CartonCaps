@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CartonCaps.Referrals.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20260112194952_InitialCreate")]
+    [Migration("20260113192225_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -27,7 +27,7 @@ namespace CartonCaps.Referrals.Infrastructure.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<short>("Channel")
-                        .HasMaxLength(32)
+                        .HasMaxLength(3)
                         .HasColumnType("INTEGER");
 
                     b.Property<DateTime>("CreatedAt")
@@ -57,7 +57,7 @@ namespace CartonCaps.Referrals.Infrastructure.Migrations
 
                     b.Property<string>("ReferrerUserId")
                         .IsRequired()
-                        .HasMaxLength(128)
+                        .HasMaxLength(60)
                         .HasColumnType("TEXT");
 
                     b.Property<short>("Status")

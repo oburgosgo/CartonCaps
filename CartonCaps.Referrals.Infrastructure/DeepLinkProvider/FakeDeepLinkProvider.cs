@@ -19,7 +19,7 @@ namespace CartonCaps.Referrals.Infrastructure.DeepLinkProvider
 
             var deepLinkId = Guid.NewGuid().ToString("N").Substring(0, 12);
 
-            var url = $"{_baseUrl}/{deepLinkId}?iid={Uri.EscapeDataString(request.InviteId.ToString())}?referral_code={Uri.EscapeDataString(request.ReferralCode)}";
+            var url = $"{_baseUrl}/{deepLinkId}?iid={Uri.EscapeDataString(request.InviteId.ToString())}&referral_code={Uri.EscapeDataString(request.ReferralCode)}";
 
             return Task.FromResult(new GetDeepLinkResponse(deepLinkId, url));
         }

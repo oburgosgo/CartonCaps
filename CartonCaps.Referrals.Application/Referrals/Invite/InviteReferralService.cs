@@ -107,6 +107,7 @@ namespace CartonCaps.Referrals.Application.Referrals.Invite
 
             return new InviteReferralResponse
             {
+                InviteId = invite.Id,
                 Channel = request.Channel,
                 ShareContent = shareContent,
                 DeeplinkUrl = invite.Deeplink,

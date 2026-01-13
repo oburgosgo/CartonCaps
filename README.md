@@ -45,3 +45,15 @@ This API uses **SQLite** and applies migrations automatically on startup (`db.Da
 ```bash
 dotnet test
 ```
+
+## Design decisions
+
+- **Validators return `ValidationResult` (not exceptions):** Business rule failures (expired invite, cooldown not met, already redeemed, etc.) are *expected outcomes*, not system faults. Returning `ValidationResult` keeps flow explicit, avoids try/catch for control flow, and makes rules easy to unit test.
+
+- **Resolve is public, Redeem/Create are authenticated:** `Resolve` is called during onboarding *before* a user signs in, so it must be accessible to determine the next screen (auth gate). `Create` and `Redeem` mutate state and/or depend on the current user, so they require authentication to prevent abuse and ensure correct ownership.
+
+- **Split into use cases (Create / Resolve / Redeem):** Each operation has different dependencies and rules. Separating them reduces constructor bloat, improves SRP, makes each service easier to understand, and keeps unit tests focused and fast.
+
+- **SQLite + auto-migrations on startup:** Reviewers can run the API on macOS without installing external databases. The app applies migrations automatically (`db.Database.Migrate()`), so `dotnet run` is enough to get a working environment.
+
+- **Error codes mapped to HTTP status:** Responses include stable, machine-readable error codes (e.g., `InviteNotFound`, `InviteExpired`, `InviteAlreadyRedeemed`) while HTTP status communicates category: `404` not found, `409` conflict, `400` invalid input, `429` rate/limit, `500` unexpected errors handled by global middleware.

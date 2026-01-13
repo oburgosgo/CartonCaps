@@ -64,7 +64,7 @@ namespace CartonCaps.Referrals.Application.Referrals.Resolve
                     ExpiresAt: invite.ExpiresAt,
                     ReferralCode: invite.ReferralCode,
                     Code: "Success",
-                    Message: "Invitation has been resolved succesfully."
+                    Message: "Invitation has been resolved successfully."
 
             );
         }

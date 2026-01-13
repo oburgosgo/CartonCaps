@@ -27,7 +27,7 @@ namespace CartonCaps.Referrals.Api.Controllers
         {
             return this.ApiOk(await _referralService.GetReferralCodeAsync(ct));
         }
-
+        [Authorize]
         [HttpGet("{inviteId:guid}")]
         public async Task<ActionResult<ApiResponse<ReferralInviteDto>>> GetInviteById(Guid inviteId, CancellationToken ct)
         {
@@ -75,6 +75,7 @@ namespace CartonCaps.Referrals.Api.Controllers
             return this.ApiOk(result);
         }
 
+        [Authorize]
         [HttpPut("{inviteId:guid}/redeem")]
         public async Task<ActionResult<ApiResponse<RedeemReferralInviteResponse>>> RedeemInviteReferral([FromRoute] Guid inviteId, [FromBody] RedeemReferralInviteRequest request, CancellationToken ct)
         {
@@ -89,7 +90,7 @@ namespace CartonCaps.Referrals.Api.Controllers
                 );
             }
 
-            return this.ApiOk(await _referralService.RedeemInviteAsync(inviteId, request, ct));
+            return this.ApiOk(result);
         }
 
     }

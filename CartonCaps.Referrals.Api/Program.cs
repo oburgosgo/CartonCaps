@@ -55,6 +55,15 @@ builder.Services.AddScoped<ICurrentUserService, CurrentUserService>();
 
 builder.Services.AddTransient<GlobalExceptionMiddleware>();
 
+builder.Services.AddControllers(o =>
+{
+    o.AllowEmptyInputInBodyModelBinding = true;
+})
+.ConfigureApiBehaviorOptions(o =>
+{
+    o.SuppressModelStateInvalidFilter = true;
+});
+
 var app = builder.Build();
 
 app.UseMiddleware<GlobalExceptionMiddleware>();

@@ -1,6 +1,8 @@
 ﻿
 namespace CartonCaps.Referrals.Application.DTOs.Referral.ResolveReferral
 {
+    
+
     public sealed record ResolveReferralInviteResponse
     (
         Guid InviteId,
