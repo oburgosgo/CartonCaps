@@ -1,0 +1,151 @@
+[
+  {
+    "ContainingType": "CartonCaps.Referrals.Api.Controllers.ReferralsController",
+    "Method": "GetInvitesByUser",
+    "RelativePath": "api/Referrals/invites",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "CartonCaps.Referrals.Api.Contracts.Common.ApiResponse\u00601[[System.Collections.Generic.IEnumerable\u00601[[CartonCaps.Referrals.Application.DTOs.Referral.GetReferrals.ReferralInviteDto, CartonCaps.Referrals.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CartonCaps.Referrals.Api.Controllers.ReferralsController",
+    "Method": "CreateInvite",
+    "RelativePath": "api/Referrals/invites",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "CartonCaps.Referrals.Application.DTOs.Referral.CreateReferral.InviteReferralRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "CartonCaps.Referrals.Api.Contracts.Common.ApiResponse\u00601[[CartonCaps.Referrals.Application.DTOs.Referral.CreateReferral.InviteReferralResponse, CartonCaps.Referrals.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CartonCaps.Referrals.Api.Controllers.ReferralsController",
+    "Method": "GetInviteById",
+    "RelativePath": "api/Referrals/invites/{inviteId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "inviteId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "CartonCaps.Referrals.Api.Contracts.Common.ApiResponse\u00601[[CartonCaps.Referrals.Application.DTOs.Referral.GetReferrals.ReferralInviteDto, CartonCaps.Referrals.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CartonCaps.Referrals.Api.Controllers.ReferralsController",
+    "Method": "RedeemInviteReferral",
+    "RelativePath": "api/Referrals/invites/{inviteId}/redeem",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "inviteId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "request",
+        "Type": "CartonCaps.Referrals.Application.DTOs.Referral.Redeem.RedeemReferralInviteRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "CartonCaps.Referrals.Api.Contracts.Common.ApiResponse\u00601[[CartonCaps.Referrals.Application.DTOs.Referral.Redeem.RedeemReferralInviteResponse, CartonCaps.Referrals.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CartonCaps.Referrals.Api.Controllers.ReferralsController",
+    "Method": "ResolveInviteReferral",
+    "RelativePath": "api/Referrals/invites/{inviteId}/resolve",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "inviteId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "CartonCaps.Referrals.Api.Contracts.Common.ApiResponse\u00601[[CartonCaps.Referrals.Application.DTOs.Referral.ResolveReferral.ResolveReferralInviteResponse, CartonCaps.Referrals.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CartonCaps.Referrals.Api.Controllers.ReferralsController",
+    "Method": "GetReferralCode",
+    "RelativePath": "api/Referrals/invites/referral-code",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "CartonCaps.Referrals.Api.Contracts.Common.ApiResponse\u00601[[CartonCaps.Referrals.Application.DTOs.User.UserProfileDto, CartonCaps.Referrals.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  }
+]

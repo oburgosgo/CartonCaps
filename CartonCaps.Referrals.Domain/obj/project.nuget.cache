@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "XxpqzyYmyiM=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\oburg\\source\\repos\\CartonCaps\\CartonCaps.Referrals.Domain\\CartonCaps.Referrals.Domain.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\oburg\\.nuget\\packages\\microsoft.openapi\\2.3.0\\microsoft.openapi.2.3.0.nupkg.sha512"
+  ],
+  "logs": []
+}

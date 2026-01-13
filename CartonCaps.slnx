@@ -1,0 +1,17 @@
+<Solution>
+  <Folder Name="/docs/" />
+  <Folder Name="/Elementos de la solución/">
+    <File Path="gitignore" />
+    <File Path="nuget.only.org.config" />
+    <File Path="README.md" />
+  </Folder>
+  <Folder Name="/src/">
+    <Project Path="CartonCaps.Referrals.Api/CartonCaps.Referrals.Api.csproj" />
+    <Project Path="CartonCaps.Referrals.Application/CartonCaps.Referrals.Application.csproj" />
+    <Project Path="CartonCaps.Referrals.Domain/CartonCaps.Referrals.Domain.csproj" />
+    <Project Path="CartonCaps.Referrals.Infrastructure/CartonCaps.Referrals.Infrastructure.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="CartonCaps.Referrals.Tests/CartonCaps.Referrals.Tests.csproj" />
+  </Folder>
+</Solution>
