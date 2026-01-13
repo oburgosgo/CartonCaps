@@ -1,6 +1,5 @@
 <Solution>
   <Folder Name="/Elementos de la solución/">
-    <File Path="gitignore" />
     <File Path="nuget.only.org.config" />
     <File Path="README.md" />
   </Folder>
