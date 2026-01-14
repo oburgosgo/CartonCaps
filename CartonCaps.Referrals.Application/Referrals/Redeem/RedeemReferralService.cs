@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using CartonCaps.Referrals.Application.Common.Abstractions;
+using CartonCaps.Referrals.Application.Common.Errors;
 using CartonCaps.Referrals.Application.Common.Validations.Commands;
 using CartonCaps.Referrals.Application.DTOs.Referral.Redeem;
 using CartonCaps.Referrals.Application.Referrals.Contracts;
@@ -23,7 +24,7 @@ namespace CartonCaps.Referrals.Application.Referrals.Redeem
             var validator = _validatorFactory.GetValidator<RedeemInviteCommand>();
             var result = await validator.ValidateAsync(new RedeemInviteCommand(InviteId: inviteId, NewUserId: request.NewUserId, NewUserName: request.NewUserName), ct);
 
-            if (!result.IsValid && result.Code == "InviteExpired" && result.Invite is not null)
+            if (!result.IsValid && result.Code == ReferralErrorCodes.InviteExpired && result.Invite is not null)
             {
                 var expiredInvite = result.Invite;
 
@@ -48,7 +49,7 @@ namespace CartonCaps.Referrals.Application.Referrals.Redeem
             return new RedeemReferralInviteResponse(
                 InviteId: inviteId,
                 Success: result.IsValid,
-                Code: result.IsValid ? "Redeemed" : result.Code,
+                Code: result.IsValid ? ReferralErrorCodes.Redeemed : result.Code,
                 RedeemedAt: result.IsValid ? result.Invite.RedeemedAt : null,
                 Message: result.Message
             );

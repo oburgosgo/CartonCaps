@@ -1,4 +1,5 @@
 ﻿using CartonCaps.Referrals.Application.Common.Abstractions;
+using CartonCaps.Referrals.Application.Common.Errors;
 using CartonCaps.Referrals.Application.Common.Options;
 using CartonCaps.Referrals.Application.Common.Validations;
 using CartonCaps.Referrals.Application.Common.Validations.Commands;
@@ -48,7 +49,7 @@ namespace CartonCaps.Referrals.Tests.Validations
             var result = await validator.ValidateAsync(request, CancellationToken.None);
 
             result.IsValid.Should().BeFalse();
-            result.Code.Should().Be("InvalidUser");
+            result.Code.Should().Be(ReferralErrorCodes.InvalidUser);
         }
 
         [Fact]
@@ -87,7 +88,7 @@ namespace CartonCaps.Referrals.Tests.Validations
             var result = await validator.ValidateAsync(request, CancellationToken.None);
 
             result.IsValid.Should().BeFalse();
-            result.Code.Should().Be("InvalidInvite");
+            result.Code.Should().Be(ReferralErrorCodes.InviteNotFound);
         }
 
         [Fact]
@@ -130,7 +131,7 @@ namespace CartonCaps.Referrals.Tests.Validations
             var result = await validator.ValidateAsync(request, CancellationToken.None);
 
             result.IsValid.Should().BeFalse();
-            result.Code.Should().Be("InviteExpired");
+            result.Code.Should().Be(ReferralErrorCodes.InviteExpired);
         }
 
         [Fact]
@@ -152,7 +153,7 @@ namespace CartonCaps.Referrals.Tests.Validations
             var result = await validator.ValidateAsync(request, CancellationToken.None);
 
             result.IsValid.Should().BeFalse();
-            result.Code.Should().Be("InvalidReedemtion");
+            result.Code.Should().Be(ReferralErrorCodes.InvalidReedemtion);
             result.Message.Should().Be("Invite already redeemed by another user.");
         }
 

@@ -1,4 +1,5 @@
 ﻿using CartonCaps.Referrals.Application.Common.Abstractions;
+using CartonCaps.Referrals.Application.Common.Errors;
 using CartonCaps.Referrals.Application.Common.Validations.Commands;
 using CartonCaps.Referrals.Domain.Entities.Referrals.Enums;
 
@@ -18,17 +19,17 @@ namespace CartonCaps.Referrals.Application.Common.Validations
 
             if (invite is null)
             {
-                return ValidationResult.Fail("InviteNotFound", "Invite not found.");
+                return ValidationResult.Fail(ReferralErrorCodes.InviteNotFound, "Invite not found.");
             }
 
             if (invite.ExpiresAt <= DateTime.UtcNow)
             {
-                return ValidationResult.Fail("InviteExpired","Invitation has expired.", invite);
+                return ValidationResult.Fail(ReferralErrorCodes.InviteExpired,"Invitation has expired.", invite);
             }
 
             if (invite.Status == ReferralInviteStatus.Redeemed)
             {
-                return ValidationResult.Fail("InviteAlreadyRedeemed", "Invite was already reedemed.");
+                return ValidationResult.Fail(ReferralErrorCodes.InviteAlreadyRedeemed, "Invite was already reedemed.");
             }
 
             return ValidationResult.Ok(invite);

@@ -1,4 +1,5 @@
-﻿using System.Reflection.Metadata.Ecma335;
+﻿using CartonCaps.Referrals.Application.Common.Errors;
+using System.Reflection.Metadata.Ecma335;
 
 namespace CartonCaps.Referrals.Api.Common
 {
@@ -8,20 +9,23 @@ namespace CartonCaps.Referrals.Api.Common
         {
             switch (code)
             {
-                case "InviteNotFound":
+                case ReferralErrorCodes.InviteNotFound:
                     return StatusCodes.Status404NotFound;
-                case "InviteExpired":
+                case ReferralErrorCodes.InviteExpired:
                     return StatusCodes.Status410Gone;
-                case "InviteAlreadyRedeemed":
+                case ReferralErrorCodes.InviteAlreadyRedeemed:
                     return StatusCodes.Status409Conflict;
-                case "SelfReferralNotAllowed":
+                case ReferralErrorCodes.InvalidReedemtion:
                     return StatusCodes.Status409Conflict;
-                case "InviteCooldownNotMet":
+                case ReferralErrorCodes.InviteCooldownNotMet:
                     return StatusCodes.Status429TooManyRequests;
-                case "DailyInviteLimitReached":
+                case ReferralErrorCodes.DailyInviteLimitReached:
                     return StatusCodes.Status429TooManyRequests;
-                case "InvalidRequest":
-                    return StatusCodes.Status400BadRequest;
+                case ReferralErrorCodes.UserNotAuthenticated:
+                    return StatusCodes.Status401Unauthorized;
+                case ReferralErrorCodes.InvalidUser:
+                    return StatusCodes.Status409Conflict;
+
                 default:
                     return StatusCodes.Status400BadRequest;
             }

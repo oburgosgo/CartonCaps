@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using Microsoft.OpenApi;
+using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -28,6 +29,18 @@ builder.Services.AddOptions<ReferralShareOptions>()
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(configuration => {
+
+    configuration.SwaggerDoc("v1", new OpenApiInfo
+    {
+        Title = "CartonCaps.Referrals API",
+        Version = "v1",
+        Description = "Referral invites API (Create / Resolve / Redeem) referral invites."
+    });
+
+    var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+    var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+    if (File.Exists(xmlPath))
+        configuration.IncludeXmlComments(xmlPath);
 
     configuration.AddSecurityDefinition("DebugUser", new OpenApiSecurityScheme
     {

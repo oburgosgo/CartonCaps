@@ -1,4 +1,5 @@
 ﻿using CartonCaps.Referrals.Application.Common.Abstractions;
+using CartonCaps.Referrals.Application.Common.Errors;
 using CartonCaps.Referrals.Application.Common.Options;
 using CartonCaps.Referrals.Application.Common.Validations.Commands;
 using Microsoft.Extensions.Options;
@@ -28,13 +29,13 @@ namespace CartonCaps.Referrals.Application.Common.Validations
 
             if (string.IsNullOrWhiteSpace(userId))
             {
-                return ValidationResult.Fail("UserNotAuthenticated", "Authenticated user is required.");
+                return ValidationResult.Fail(ReferralErrorCodes.UserNotAuthenticated, "Authenticated user is required.");
             }
 
             var todayInvites = await _referralRepository.CountInvitesInRangeAsync(userId, DateTime.UtcNow.Date, DateTime.UtcNow.Date.AddDays(1), ct);
             if (todayInvites >= limits.MaxPerDay)
             {
-                return ValidationResult.Fail("DailyInviteLimitReached", $"Daily invite limit reached ({limits.MaxPerDay}).");
+                return ValidationResult.Fail(ReferralErrorCodes.DailyInviteLimitReached, $"Daily invite limit reached ({limits.MaxPerDay}).");
                 
             }
 
@@ -44,7 +45,7 @@ namespace CartonCaps.Referrals.Application.Common.Validations
                 var minutesSinceLast = (DateTime.UtcNow - lastCreatedAt.Value).TotalMinutes;
                 if (minutesSinceLast < limits.CooldownMinutes)
                 {
-                    return ValidationResult.Fail("InviteCooldownNotMet", $"Please wait {limits.CooldownMinutes} minutes between invites.");
+                    return ValidationResult.Fail(ReferralErrorCodes.InviteCooldownNotMet, $"Please wait {limits.CooldownMinutes} minutes between invites.");
                     
                 }
             }

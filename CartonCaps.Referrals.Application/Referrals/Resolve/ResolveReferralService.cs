@@ -1,5 +1,6 @@
 ﻿using CartonCaps.Referrals.Application.Common.Abstractions;
 using CartonCaps.Referrals.Application.Common.Constants;
+using CartonCaps.Referrals.Application.Common.Errors;
 using CartonCaps.Referrals.Application.Common.Messaging;
 using CartonCaps.Referrals.Application.Common.Validations;
 using CartonCaps.Referrals.Application.Common.Validations.Commands;
@@ -41,7 +42,7 @@ namespace CartonCaps.Referrals.Application.Referrals.Resolve
 
                 return BuildResolveResponse(invite, referrerProfile);
             }
-            else if (!result.IsValid && result.Code == "InviteExpired" && result.Invite is not null)
+            else if (!result.IsValid && result.Code == ReferralErrorCodes.InviteExpired && result.Invite is not null)
             {
                 var expiredInvite = result.Invite;
 
@@ -63,7 +64,7 @@ namespace CartonCaps.Referrals.Application.Referrals.Resolve
                     ReferrerName: userProfile.FullName,
                     ExpiresAt: invite.ExpiresAt,
                     ReferralCode: invite.ReferralCode,
-                    Code: "Success",
+                    Code: ReferralErrorCodes.Success,
                     Message: "Invitation has been resolved successfully."
 
             );
