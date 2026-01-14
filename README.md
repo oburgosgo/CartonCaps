@@ -29,7 +29,7 @@ From the repo root:
 ```bash
 dotnet restore
 dotnet build
-dotnet run --project src/CartonCaps.Referrals.Api
+dotnet run --project ./CartonCaps.Referrals.Api
 ```
 
 ## Database (SQLite)
