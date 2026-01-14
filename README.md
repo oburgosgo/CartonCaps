@@ -57,3 +57,40 @@ dotnet test
 - **SQLite + auto-migrations on startup:** Reviewers can run the API on macOS without installing external databases. The app applies migrations automatically (`db.Database.Migrate()`), so `dotnet run` is enough to get a working environment.
 
 - **Error codes mapped to HTTP status:** Responses include stable, machine-readable error codes (e.g., `InviteNotFound`, `InviteExpired`, `InviteAlreadyRedeemed`) while HTTP status communicates category: `404` not found, `409` conflict, `400` invalid input, `429` rate/limit, `500` unexpected errors handled by global middleware.
+
+## Fake users (for local testing)
+
+This take-home uses a fake user profile provider with a hardcoded in-memory user list.  
+To simulate an authenticated user, send the header:
+
+- `X-Debug-UserId: <email>`
+
+Available users:
+
+- `oburgosgo@gmail.com` — ReferralCode: `ZaH234` — Name: `Oscar Burgos`
+- `hazel.rojasgmail.com` — ReferralCode: `GYU740` — Name: `Hazel Rojas`
+- `tavo@gmail.com` — ReferralCode: `BVP652` — Name: `Tavo Pereira`
+- `blalopez@gmail.com` — ReferralCode: `XOP823` — Name: `Bladimir Lopez`
+- `chapin@gmail.com` — ReferralCode: `HaU654` — Name: `Ronald Oliveros`
+
+> Note: Any email value will authenticate through the fake auth handler, but only the users above exist in the fake profile provider.
+
+## API specification (Swagger)
+
+This project includes an OpenAPI/Swagger specification.
+
+After running the API, open Swagger UI at:
+
+- `/swagger`
+
+Example:
+- `https://localhost:<port>/swagger`
+
+Swagger contains the full API contract (endpoints, request/response models, auth header, and example payloads).
+
+### Troubleshooting (macOS)
+If HTTPS certificates cause issues, you can trust the dev certs:
+
+```bash
+dotnet dev-certs https --trust
+
